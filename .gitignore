@@ -5,3 +5,15 @@ cache/
 *.log
 coverage/
 reports/*.json
+# Python virtual environment
+venv/
+
+# Foundry build files
+smart-contracts/lib/
+smart-contracts/out/
+smart-contracts/cache/
+
+# OS / temp files
+*.log
+*.tmp
+.DS_Store
