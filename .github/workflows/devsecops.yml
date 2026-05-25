@@ -27,11 +27,11 @@ jobs:
           solc-select install 0.8.20
           solc-select use 0.8.20
 
-      # Utilisation de l'action officielle pour installer Foundry proprement
+      # Correction majeure : Remplacement du curl défaillant par l'action officielle
       - name: Install Foundry Toolchain
         uses: foundry-rs/foundry-toolchain@v1
 
-      # On compile d'abord pour donner à Slither les artefacts nécessaires
+      # Étape indispensable : compiler pour générer les artefacts AST requis par Slither
       - name: Build contracts
         working-directory: smart-contracts
         run: forge build
@@ -56,7 +56,7 @@ jobs:
         with:
           submodules: recursive
 
-      # Utilisation de l'action officielle ici aussi
+      # Correction majeure : Utilisation de l'action officielle pour assurer la persistance du PATH
       - name: Install Foundry Toolchain
         uses: foundry-rs/foundry-toolchain@v1
 
