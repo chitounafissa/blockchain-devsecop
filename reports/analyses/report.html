@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>DevSecOps — Rapport Slither</title>
+<style>
+  body{font-family:system-ui,sans-serif;background:#0d1117;color:#e6edf3;margin:0;padding:2rem}
+  h1{text-align:center;font-size:1.4rem;margin-bottom:2rem;color:#fff}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:900px;margin:0 auto}
+  .card{background:#161b22;border-radius:12px;padding:1.5rem;border:1px solid #30363d}
+  .card h2{font-size:1rem;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+  .badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:99px;font-weight:600}
+  .H{background:#ff000033;color:#f85149}.M{background:#ff990033;color:#d29922}
+  .L{background:#00ff0022;color:#3fb950}.I{background:#0088ff22;color:#58a6ff}
+  .finding{background:#0d1117;border-radius:8px;padding:10px 12px;margin-bottom:8px;border-left:3px solid #30363d;font-size:13px}
+  .finding.H{border-color:#f85149}.finding.M{border-color:#d29922}
+  .finding.L{border-color:#3fb950}.finding.I{border-color:#58a6ff}
+  .ft{font-weight:600;margin-bottom:4px}.fd{color:#8b949e;font-size:12px;line-height:1.5}
+  .verdict{text-align:center;padding:10px;border-radius:8px;margin-top:1rem;font-weight:600}
+  .verdict.BLOCK{background:#ff000022;color:#f85149}
+  .verdict.PASS{background:#00ff0022;color:#3fb950}
+  .stats{display:flex;gap:12px;margin-bottom:1rem;flex-wrap:wrap}
+  .stat{background:#0d1117;border-radius:6px;padding:6px 12px;font-size:12px;text-align:center}
+  .stat .n{font-size:1.4rem;font-weight:600;display:block}
+  code{background:#21262d;padding:1px 5px;border-radius:4px;font-size:11px;font-family:monospace}
+  .loader{color:#8b949e;font-size:13px}
+  @media(max-width:600px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<h1>🔐 DevSecOps Smart Contract — Rapport Slither</h1>
+<div class="grid">
+  <div class="card">
+    <h2>❌ VulnerableToken.sol</h2>
+    <div class="stats" id="vstats"><span class="loader">Chargement...</span></div>
+    <div id="vfindings"></div>
+    <div id="vverdict" class="verdict"></div>
+  </div>
+  <div class="card">
+    <h2>✅ SecureToken.sol</h2>
+    <div class="stats" id="sstats"><span class="loader">Chargement...</span></div>
+    <div id="sfindings"></div>
+    <div id="sverdict" class="verdict"></div>
+  </div>
+</div>
+<script>
+const SEV={high:'H',medium:'M',low:'L',informational:'I'};
+function renderReport(data,statsId,findingsId,verdictId){
+  const results=data.results?.detectors||[];
+  const counts={H:0,M:0,L:0,I:0};
+  results.forEach(r=>{const s=SEV[r.impact?.toLowerCase()]||'I';counts[s]++;});
+  const labels={H:'High',M:'Medium',L:'Low',I:'Info'};
+  document.getElementById(statsId).innerHTML=Object.entries(counts)
+    .map(([k,v])=>`<span class="stat"><span class="n" style="color:${k==='H'?'#f85149':k==='M'?'#d29922':k==='L'?'#3fb950':'#58a6ff'}">${v}</span>${labels[k]}</span>`).join('');
+  document.getElementById(findingsId).innerHTML=results.slice(0,8).map(r=>{
+    const s=SEV[r.impact?.toLowerCase()]||'I';
+    const desc=(r.description||'').split('\n')[0].slice(0,120);
+    return `<div class="finding ${s}"><div class="ft"><span class="badge ${s}">${r.check||s}</span></div><div class="fd">${desc}</div></div>`;
+  }).join('')||`<div class="finding I"><div class="ft">Aucun finding critique</div></div>`;
+  const hasHigh=counts.H>0;
+  document.getElementById(verdictId).className='verdict '+(hasHigh?'BLOCK':'PASS');
+  document.getElementById(verdictId).textContent=hasHigh?'🚫 CI/CD BLOQUÉE — Finding HIGH détecté':'✅ CI/CD VALIDÉE — Aucun finding critique';
+}
+fetch('vulnerable.json').then(r=>r.json()).then(d=>renderReport(d,'vstats','vfindings','vverdict')).catch(()=>{document.getElementById('vstats').innerHTML='<span class="loader">vulnerable.json introuvable</span>';});
+fetch('secure.json').then(r=>r.json()).then(d=>renderReport(d,'sstats','sfindings','sverdict')).catch(()=>{document.getElementById('sstats').innerHTML='<span class="loader">secure.json introuvable</span>';});
+</script>
+</body>
+</html>

@@ -1,0 +1,410 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "withdraw",
+            "source_mapping": {
+              "start": 267,
+              "length": 269,
+              "filename_relative": "src/VulnerableToken.sol",
+              "filename_absolute": "/home/ubuntu/blockchain-devsecop/smart-contracts/src/VulnerableToken.sol",
+              "filename_short": "src/VulnerableToken.sol",
+              "is_dependency": false,
+              "lines": [
+                12,
+                13,
+                14,
+                15,
+                16,
+                17
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "VulnerableToken",
+                "source_mapping": {
+                  "start": 58,
+                  "length": 480,
+                  "filename_relative": "src/VulnerableToken.sol",
+                  "filename_absolute": "/home/ubuntu/blockchain-devsecop/smart-contracts/src/VulnerableToken.sol",
+                  "filename_short": "src/VulnerableToken.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              },
+              "signature": "withdraw(uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "(success,None) = msg.sender.call{value: amount}()",
+            "source_mapping": {
+              "start": 391,
+              "length": 53,
+              "filename_relative": "src/VulnerableToken.sol",
+              "filename_absolute": "/home/ubuntu/blockchain-devsecop/smart-contracts/src/VulnerableToken.sol",
+              "filename_short": "src/VulnerableToken.sol",
+              "is_dependency": false,
+              "lines": [
+                14
+              ],
+              "starting_column": 9,
+              "ending_column": 62
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "withdraw",
+                "source_mapping": {
+                  "start": 267,
+                  "length": 269,
+                  "filename_relative": "src/VulnerableToken.sol",
+                  "filename_absolute": "/home/ubuntu/blockchain-devsecop/smart-contracts/src/VulnerableToken.sol",
+                  "filename_short": "src/VulnerableToken.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "VulnerableToken",
+                    "source_mapping": {
+                      "start": 58,
+                      "length": 480,
+                      "filename_relative": "src/VulnerableToken.sol",
+                      "filename_absolute": "/home/ubuntu/blockchain-devsecop/smart-contracts/src/VulnerableToken.sol",
+                      "filename_short": "src/VulnerableToken.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "withdraw(uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls"
+            }
+          },
+          {
+            "type": "node",
+            "name": "balances[msg.sender] -= amount",
+            "source_mapping": {
+              "start": 499,
+              "length": 30,
+              "filename_relative": "src/VulnerableToken.sol",
+              "filename_absolute": "/home/ubuntu/blockchain-devsecop/smart-contracts/src/VulnerableToken.sol",
+              "filename_short": "src/VulnerableToken.sol",
+              "is_dependency": false,
+              "lines": [
+                16
+              ],
+              "starting_column": 9,
+              "ending_column": 39
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "withdraw",
+                "source_mapping": {
+                  "start": 267,
+                  "length": 269,
+                  "filename_relative": "src/VulnerableToken.sol",
+                  "filename_absolute": "/home/ubuntu/blockchain-devsecop/smart-contracts/src/VulnerableToken.sol",
+                  "filename_short": "src/VulnerableToken.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "VulnerableToken",
+                    "source_mapping": {
+                      "start": 58,
+                      "length": 480,
+                      "filename_relative": "src/VulnerableToken.sol",
+                      "filename_absolute": "/home/ubuntu/blockchain-devsecop/smart-contracts/src/VulnerableToken.sol",
+                      "filename_short": "src/VulnerableToken.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "withdraw(uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "balances"
+            }
+          }
+        ],
+        "description": "Reentrancy in VulnerableToken.withdraw(uint256) (src/VulnerableToken.sol#12-17):\n\tExternal calls:\n\t- (success,None) = msg.sender.call{value: amount}() (src/VulnerableToken.sol#14)\n\tState variables written after the call(s):\n\t- balances[msg.sender] -= amount (src/VulnerableToken.sol#16)\n\tVulnerableToken.balances (src/VulnerableToken.sol#5) can be used in cross function reentrancies:\n\t- VulnerableToken.balances (src/VulnerableToken.sol#5)\n\t- VulnerableToken.deposit() (src/VulnerableToken.sol#7-9)\n\t- VulnerableToken.withdraw(uint256) (src/VulnerableToken.sol#12-17)\n",
+        "markdown": "Reentrancy in [VulnerableToken.withdraw(uint256)](src/VulnerableToken.sol#L12-L17):\n\tExternal calls:\n\t- [(success,None) = msg.sender.call{value: amount}()](src/VulnerableToken.sol#L14)\n\tState variables written after the call(s):\n\t- [balances[msg.sender] -= amount](src/VulnerableToken.sol#L16)\n\t[VulnerableToken.balances](src/VulnerableToken.sol#L5) can be used in cross function reentrancies:\n\t- [VulnerableToken.balances](src/VulnerableToken.sol#L5)\n\t- [VulnerableToken.deposit()](src/VulnerableToken.sol#L7-L9)\n\t- [VulnerableToken.withdraw(uint256)](src/VulnerableToken.sol#L12-L17)\n",
+        "first_markdown_element": "src/VulnerableToken.sol#L12-L17",
+        "id": "d325d37c98317a2f75d6994333bb81bbd2ca8584e7cb3ffd4096f9b8a953be62",
+        "check": "reentrancy-eth",
+        "impact": "High",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "pragma",
+            "name": "^0.8.20",
+            "source_mapping": {
+              "start": 32,
+              "length": 24,
+              "filename_relative": "src/VulnerableToken.sol",
+              "filename_absolute": "/home/ubuntu/blockchain-devsecop/smart-contracts/src/VulnerableToken.sol",
+              "filename_short": "src/VulnerableToken.sol",
+              "is_dependency": false,
+              "lines": [
+                2
+              ],
+              "starting_column": 1,
+              "ending_column": 25
+            },
+            "type_specific_fields": {
+              "directive": [
+                "solidity",
+                "^",
+                "0.8",
+                ".20"
+              ]
+            }
+          }
+        ],
+        "description": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- ^0.8.20 (src/VulnerableToken.sol#2)\n",
+        "markdown": "Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- VerbatimInvalidDeduplication\n\t- FullInlinerNonExpressionSplitArgumentEvaluationOrder\n\t- MissingSideEffectsOnSelectorAccess.\nIt is used by:\n\t- [^0.8.20](src/VulnerableToken.sol#L2)\n",
+        "first_markdown_element": "src/VulnerableToken.sol#L2",
+        "id": "afb689e7aeb3e8ca1d7fa3d56a73168a1466dff2d9c61f6da0b04c9841a5db5f",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "withdraw",
+            "source_mapping": {
+              "start": 267,
+              "length": 269,
+              "filename_relative": "src/VulnerableToken.sol",
+              "filename_absolute": "/home/ubuntu/blockchain-devsecop/smart-contracts/src/VulnerableToken.sol",
+              "filename_short": "src/VulnerableToken.sol",
+              "is_dependency": false,
+              "lines": [
+                12,
+                13,
+                14,
+                15,
+                16,
+                17
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "VulnerableToken",
+                "source_mapping": {
+                  "start": 58,
+                  "length": 480,
+                  "filename_relative": "src/VulnerableToken.sol",
+                  "filename_absolute": "/home/ubuntu/blockchain-devsecop/smart-contracts/src/VulnerableToken.sol",
+                  "filename_short": "src/VulnerableToken.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              },
+              "signature": "withdraw(uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "(success,None) = msg.sender.call{value: amount}()",
+            "source_mapping": {
+              "start": 391,
+              "length": 53,
+              "filename_relative": "src/VulnerableToken.sol",
+              "filename_absolute": "/home/ubuntu/blockchain-devsecop/smart-contracts/src/VulnerableToken.sol",
+              "filename_short": "src/VulnerableToken.sol",
+              "is_dependency": false,
+              "lines": [
+                14
+              ],
+              "starting_column": 9,
+              "ending_column": 62
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "withdraw",
+                "source_mapping": {
+                  "start": 267,
+                  "length": 269,
+                  "filename_relative": "src/VulnerableToken.sol",
+                  "filename_absolute": "/home/ubuntu/blockchain-devsecop/smart-contracts/src/VulnerableToken.sol",
+                  "filename_short": "src/VulnerableToken.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "VulnerableToken",
+                    "source_mapping": {
+                      "start": 58,
+                      "length": 480,
+                      "filename_relative": "src/VulnerableToken.sol",
+                      "filename_absolute": "/home/ubuntu/blockchain-devsecop/smart-contracts/src/VulnerableToken.sol",
+                      "filename_short": "src/VulnerableToken.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "withdraw(uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Low level call in VulnerableToken.withdraw(uint256) (src/VulnerableToken.sol#12-17):\n\t- (success,None) = msg.sender.call{value: amount}() (src/VulnerableToken.sol#14)\n",
+        "markdown": "Low level call in [VulnerableToken.withdraw(uint256)](src/VulnerableToken.sol#L12-L17):\n\t- [(success,None) = msg.sender.call{value: amount}()](src/VulnerableToken.sol#L14)\n",
+        "first_markdown_element": "src/VulnerableToken.sol#L12-L17",
+        "id": "35149a651464e367a618216a3ce538fa73d31143c9e583c00f137ec8a494e9fb",
+        "check": "low-level-calls",
+        "impact": "Informational",
+        "confidence": "High"
+      }
+    ]
+  }
+}

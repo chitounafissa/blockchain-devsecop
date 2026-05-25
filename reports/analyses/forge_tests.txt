@@ -1,0 +1,16 @@
+Compiling 23 files with Solc 0.8.35
+Solc 0.8.35 finished in 541.54ms
+Compiler run successful!
+
+Ran 3 tests for test/TokenTest.t.sol:TokenTest
+[PASS] testSecureMintByOwner() (gas: 25529)
+[PASS] testSecureMintRevertIfNotOwner() (gas: 12221)
+[PASS] testVulnDeposit() (gas: 36082)
+Suite result: ok. 3 passed; 0 failed; 0 skipped; finished in 445.55µs (99.58µs CPU time)
+
+Ran 2 tests for test/Counter.t.sol:CounterTest
+[PASS] testFuzz_SetNumber(uint256) (runs: 256, μ: 28667, ~: 29289)
+[PASS] test_Increment() (gas: 28783)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 4.20ms (3.91ms CPU time)
+
+Ran 2 test suites in 9.50ms (4.65ms CPU time): 5 tests passed, 0 failed, 0 skipped (5 total tests)
