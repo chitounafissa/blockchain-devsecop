@@ -23,15 +23,16 @@ jobs:
 
       - name: Install Slither + solc
         run: |
+          python -m pip install --upgrade pip
           pip install slither-analyzer solc-select
           solc-select install 0.8.20
           solc-select use 0.8.20
 
-      # Correction majeure : Remplacement du curl défaillant par l'action officielle
       - name: Install Foundry Toolchain
         uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: stable
 
-      # Étape indispensable : compiler pour générer les artefacts AST requis par Slither
       - name: Build contracts
         working-directory: smart-contracts
         run: forge build
@@ -56,9 +57,10 @@ jobs:
         with:
           submodules: recursive
 
-      # Correction majeure : Utilisation de l'action officielle pour assurer la persistance du PATH
       - name: Install Foundry Toolchain
         uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: stable
 
       - name: Run Forge Tests & Fuzzing
         working-directory: smart-contracts
