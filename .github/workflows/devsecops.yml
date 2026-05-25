@@ -7,19 +7,17 @@ on:
     branches: [main]
 
 jobs:
-
   slither-audit:
-    name: Slither Static Analysis
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
         with:
           submodules: recursive
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
@@ -29,43 +27,39 @@ jobs:
           solc-select install 0.8.20
           solc-select use 0.8.20
 
-      - name: Install Foundry
-        run: |
-          curl -L https://foundry.paradigm.xyz | bash
-          ~/.foundry/bin/foundryup
+      # Utilisation de l'action officielle pour installer Foundry proprement
+      - name: Install Foundry Toolchain
+        uses: foundry-rs/foundry-toolchain@v1
 
-      - name: Run Slither on VulnerableToken
+      # On compile d'abord pour donner à Slither les artefacts nécessaires
+      - name: Build contracts
+        working-directory: smart-contracts
+        run: forge build
+
+      - name: Run Slither Security Analysis
         working-directory: smart-contracts
         run: |
-          slither src/VulnerableToken.sol --json vuln_report.json || true
+          slither . --json slither-report.json || true
 
-      - name: Run Slither on SecureToken
-        working-directory: smart-contracts
-        run: |
-          slither src/SecureToken.sol --json secure_report.json || true
-
-      - name: Upload reports
+      - name: Upload Slither reports
         uses: actions/upload-artifact@v4
         with:
           name: slither-reports
-          path: smart-contracts/*.json
-
+          path: smart-contracts/slither-report.json
 
   foundry-tests:
-    name: Foundry Unit Tests
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      - name: Install Foundry
-        run: |
-          curl -L https://foundry.paradigm.xyz | bash
-          ~/.foundry/bin/foundryup
+      # Utilisation de l'action officielle ici aussi
+      - name: Install Foundry Toolchain
+        uses: foundry-rs/foundry-toolchain@v1
 
-      - name: Run tests
+      - name: Run Forge Tests & Fuzzing
         working-directory: smart-contracts
-        run: |
+        run: forge test -vv
